@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Metro UI -->
+    <link rel="stylesheet" href="https://cdn.korzh.com/metroui/v4/css/metro-all.min.css">
+  </head>
+  <body>
+<div id="mnn">     
+    <h1>Пішінді толтырыңыз</h1> 
+    <input type="text" id = "n" data-role="input" data-prepend="Сенің атың: "> 
+<p>Сіздің мүдделеріңіз:</p> 
+<select id="i" data-role="select" multiple>  
+    <option value="1" data-template="$1">Кітап оқу</option>  
+    <option value="2" data-template="$1">Саяхаттау және жаңа мәдениеттерді зерттеу</option>  
+    <option value="3" data-template="$1">Фотография</option>  
+    <option value="4" data-template="$1">Компьютер ойындары</option>  
+    <option value="5" data-template="$1">Сурет салу және бояу</option>  
+    <option value="6" data-template="$1">Музыка және аспапта ойнау</option>  
+    <option value="7" data-template="$1">Спорт (жүгіру, йога, жүзу, фитнес)</option>  
+    <option value="8" data-template="$1">Пісіру және тамақпен тәжірибе жасау</option>  
+    <option value="9" data-template="$1">Тоқу және тігу</option>  
+    <option value="10" data-template="$1"> Тілдерді үйрену</option>  
+    <option value="11" data-template="$1"> Блог жүргізу және бейне мазмұнын жасау</option>  
+    <option value="12" data-template="$1">Танцы</option>  
+    <option value="13" data-template="$1">Қолөнер сабақтары (кесте, моншақ, макраме)</option> 
+    <option value="14" data-template="$1">Коллекция (монеталар, ашық хаттар, пошта маркалары)</option> 
+    <option value="15" data-template="$1">Көгалдандыру және өсімдіктерді өсіру</option> 
+    <option value="16" data-template="$1">Тарих пен мәдениетті зерттеу</option> 
+    <option value="17" data-template="$1">Мобильді ойындар</option> 
+    <option value="18" data-template="$1">Ойын оқиғалары</option> 
+    <option value="19" data-template="$1">Ретро ойындар</option> 
+    <option value="20" data-template="$1">Ойын турнирлері</option> 
+    <option value="21" data-template="$1">Командалық ойындар</option> 
+    <option value="22" data-template="$1">Кино</option> 
+    <option value="23" data-template="$1">Керемет тағамдар</option> 
+    <option value="24" data-template="$1">Жрать</option> 
+  <option value="24" data-template="$1">Фурри</option> 
+</select> 
+<p>Сіздің жасыңыз:</p> 
+<input id="e" type="text" data-role="spinner" data-min-value="16" data-max-value="100" data-step="1" value="16"> 
+<p>Сіздің жынысыңыз:</p> 
+<select id="p" data-role="select"> 
+    <option value="1" data-template="$1">Еркек</option> 
+    <option value="2" data-template="$1">Әйел</option> 
+</select> 
+ 
+<p>Өзі туралы:</p> 
+<textarea id="o" data-role="textarea" data-prepend="<span class='mif-leanpub'></span>"></textarea> 
+ 
+</div>
+    <p></p>
+    <div id="btnSubmitDiv">
+  <button id="btnSubmit" class="button primary outline">Жіберу</button>
+</div>
+    <!-- Metro UI -->
+    <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+
+        $(document).ready(function() {
+            $("#btnSubmit").click(function(){
+        var select = Metro.getPlugin($("#i"), 'select');
+        cards={
+                    "n":$("#n").val(),
+         "h":select.val(),
+         "e":$("#e").val(), 
+          "p":$("#p").val(),
+          "o":$("#o").val(),
+                  };
+              
+              console.log(cards);
+
+                tg.sendData(JSON.stringify(cards)); 
+
+            }); 
+        });</script>
+        <style>#mnn{
+            width : 75%;
+            margin: 0 auto;
+        }
+        #btnSubmitDiv{
+          width : 75%;
+            margin: 0 auto;
+        }
+        #btnSubmit{
+          width : 100%;
+            margin: 0 auto;
+        }</style>
+  </body>
+</html>
+
+
+<!-- $(document).ready(function() {
+    $("#btnSubmit").click(function(){
+var select = Metro.getPlugin($("#i"), 'select');
+cards={
+            "n":$("#n").val(),
+ "h":select.val(),
+ "e":$("#e").val(), 
+  "p":$("#p").val(),
+  "o":$("#o").val(),
+          };
+      
+        console.log(JSON.stringify(cards));
+        
+    }); 
+}); -->
